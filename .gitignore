@@ -1,0 +1,29 @@
+# --- Secret / key material -------------------------------------------------
+# resource/ holds the GOST key container (root.zip) and certificate (root.cer),
+# supplied at build time. Never commit them. Keep the directory placeholder.
+/resource/*
+!/resource/.gitignore
+
+# Exported / private key & certificate artifacts (defense in depth)
+*.zip
+*.cer
+*.crt
+*.key
+*.pem
+client.crt
+
+# --- IDE -------------------------------------------------------------------
+.idea/
+
+# --- OS --------------------------------------------------------------------
+.DS_Store
+
+# --- Build / runtime artifacts ---------------------------------------------
+# MarkItDown converter output (see app.sh)
+document.md
+
+# NOTE: CryptoPro packages (.docker/*.deb, .docker/*.tgz) are large binaries
+# required for the build. Uncomment to keep them out of git and distribute
+# them out-of-band instead:
+# .docker/*.deb
+# .docker/*.tgz

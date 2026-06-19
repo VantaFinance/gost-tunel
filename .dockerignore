@@ -1,0 +1,27 @@
+# Build context lives at the repo root because .docker/Dockerfile COPYs from
+# ./.docker/ and ./resource/. Keep those; exclude everything else that the
+# image build does not need (smaller context, no IDE/AI/tooling leakage).
+
+# Version control / OS
+.git
+.gitignore
+.DS_Store
+
+# IDE
+.idea/
+
+# AI Factory / Claude tooling (not needed in the image)
+.agents/
+.ai-factory/
+.ai-factory.json
+.claude/
+.mcp.json
+skills-lock.json
+
+# Docs (not needed in the image)
+*.md
+
+# MarkItDown helper (separate image; not part of the tunnel build)
+app.sh
+
+# NOTE: do NOT ignore .docker/ or resource/ — they are required by COPY.
